@@ -21,9 +21,11 @@ import androidx.appcompat.widget.Toolbar;
 
 import android.view.Menu;
 
-public class MainActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener {
 
+public class MainActivity extends AppCompatActivity
+
+        implements NavigationView.OnNavigationItemSelectedListener {
+private int hero;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
