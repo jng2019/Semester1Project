@@ -27,6 +27,7 @@ import android.view.Menu;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -68,13 +69,15 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         Card[] cards = gson.fromJson(jsonString, Card[].class);
         // convert your array to a list using the Arrays utility class
         completeDeckFromJson = Arrays.asList(cards);
+        robotCardListDeck = new ArrayList<>();
+        playerCardListDeck = new ArrayList<>();
         int a;
-        for (a = completeDeckFromJson.size() - 26; a >= 0; a++)
+        for (a = completeDeckFromJson.size() - 26; a >= 0; a--)
         {
             robotCardListDeck.add(completeDeckFromJson.get(a));
         }
         int b;
-        for (b = completeDeckFromJson.size(); b > 26; b--)
+        for (b = completeDeckFromJson.size() - 1; b > 26; b--)
         {
             playerCardListDeck.add(completeDeckFromJson.get(b));
         }
