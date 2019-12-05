@@ -41,10 +41,6 @@ public class SlapjackFragment extends Fragment {
 //         return super.onCreateView(inflater, container, savedInstanceState);
     }
 
-    private double calculatePythag(double a, double b) {
-        return Math.sqrt(Math.pow(a, 2) + Math.pow(b, 2));
-    }
-
     private void wireWidgets(View rootView) {
         buttonSlap = rootView.findViewById(R.id.button_slapjack_slap);
     }
