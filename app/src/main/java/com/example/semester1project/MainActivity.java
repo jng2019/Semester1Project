@@ -55,15 +55,15 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         toggle.syncState();
         navigationView.setNavigationItemSelectedListener(this);
 
-//        InputStream XmlFileInputStream = getResources().openRawResource(R.raw.cards); //getting xml
-//        String jsonString = readTextFile(XmlFileInputStream);
-//        // create a gson object
-//        Gson gson = new Gson();
-//        // read your json file into an array of questions
-//        Card[] cards =  gson.fromJson(jsonString, Card[].class);
-//        // convert your array to a list using the Arrays utility class
-//        cardList = Arrays.asList(cards);
-//        // verify that it read everything properly
+        InputStream XmlFileInputStream = getResources().openRawResource(R.raw.deckofcards); //getting xml
+        String jsonString = readTextFile(XmlFileInputStream);
+        // create a gson object
+        Gson gson = new Gson();
+        // read your json file into an array of questions
+        Card[] cards =  gson.fromJson(jsonString, Card[].class);
+        // convert your array to a list using the Arrays utility class
+        cardList = Arrays.asList(cards);
+        // verify that it read everything properly
     }
 
     @Override
