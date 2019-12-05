@@ -31,7 +31,10 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
-    private List<Card> cardList;
+    private List<Card> completeDeckFromJson;
+    private List<Card> robotCardListDeck;
+    private List<Card> playerCardListDeck;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,9 +63,19 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         // create a gson object
         Gson gson = new Gson();
         // read your json file into an array of questions
-        Card[] cards =  gson.fromJson(jsonString, Card[].class);
+        Card[] cards = gson.fromJson(jsonString, Card[].class);
         // convert your array to a list using the Arrays utility class
-        cardList = Arrays.asList(cards);
+        completeDeckFromJson = Arrays.asList(cards);
+        int a;
+        for (a = completeDeckFromJson.size() - 26; a >= 0; a++)
+        {
+            robotCardListDeck.add(completeDeckFromJson.get(a));
+        }
+        int b;
+        for (b = completeDeckFromJson.size(); b > 26; b--)
+        {
+            playerCardListDeck.add(completeDeckFromJson.get(b));
+        }
         // verify that it read everything properly
     }
 
