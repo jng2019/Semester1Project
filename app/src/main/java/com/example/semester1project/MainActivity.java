@@ -34,11 +34,6 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
-    private List<Card> completeDeckFromJson;
-    private List<Card> robotCardListDeck;
-    private List<Card> playerCardListDeck;
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -61,28 +56,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         toggle.syncState();
         navigationView.setNavigationItemSelectedListener(this);
 
-        InputStream XmlFileInputStream = getResources().openRawResource(R.raw.deckofcards); //getting xml
-        String jsonString = readTextFile(XmlFileInputStream);
-        // create a gson object
-        Gson gson = new Gson();
-        // read your json file into an array of questions
-        Card[] cards = gson.fromJson(jsonString, Card[].class);
-        // convert your array to a list using the Arrays utility class
-        completeDeckFromJson = Arrays.asList(cards);
-        robotCardListDeck = new ArrayList<>();
-        playerCardListDeck = new ArrayList<>();
-        int a;
-        for (a = completeDeckFromJson.size() - 26; a >= 0; a--)
-        {
-            robotCardListDeck.add(completeDeckFromJson.get(a));
-        }
-        int b;
-        for (b = completeDeckFromJson.size() - 1; b > 26; b--)
-        {
-            playerCardListDeck.add(completeDeckFromJson.get(b));
-        }
-        // verify that it read everything properly
-        // pls work
+
     }
 
     @Override
@@ -146,20 +120,5 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     }
 
 
-    public String readTextFile(InputStream inputStream) {
-        ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
 
-        byte buf[] = new byte[1024];
-        int len;
-        try {
-            while ((len = inputStream.read(buf)) != -1) {
-                outputStream.write(buf, 0, len);
-            }
-            outputStream.close();
-            inputStream.close();
-        } catch (IOException e) {
-
-        }
-        return outputStream.toString();
-    }
 }
