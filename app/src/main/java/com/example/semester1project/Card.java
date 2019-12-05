@@ -1,7 +1,6 @@
 package com.example.semester1project;
 
 public class Card {
-    private String name;
     private int value;
     private String suit;
     private String image;
@@ -18,11 +17,6 @@ public class Card {
         this.image = image;
     }
 
-
-    public String getName() {
-        return name;
-    }
-
     public int getNumber() {
         return value;
     }
@@ -35,8 +29,7 @@ public class Card {
     @Override
     public String toString() {
         return
-                "name ='" + name + '\'' +
-                ", suit ='" + suit + '\'' +
+                "suit ='" + suit + '\'' +
                 ", value ='" + value + '\'' +
                 '}';
     }
