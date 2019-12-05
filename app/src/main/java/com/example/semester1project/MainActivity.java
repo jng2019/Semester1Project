@@ -79,6 +79,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             playerCardListDeck.add(completeDeckFromJson.get(b));
         }
         // verify that it read everything properly
+        // pls work
     }
 
     @Override
