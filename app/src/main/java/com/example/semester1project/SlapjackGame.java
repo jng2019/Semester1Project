@@ -9,7 +9,13 @@ import java.util.Arrays;
 import java.util.List;
 
 public class SlapjackGame {
+    private List<Card> robotList;
+    private List<Card> playerList;
 
+    public SlapjackGame(List<Card> robotList, List<Card> playerList){
+        this.robotList = robotList;
+        this.playerList = playerList;
+    }
 
 
 }

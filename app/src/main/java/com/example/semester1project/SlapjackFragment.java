@@ -29,6 +29,7 @@ public class SlapjackFragment extends Fragment {
     private List<Card> completeDeckFromJson;
     private List<Card> robotCardListDeck;
     private List<Card> playerCardListDeck;
+    private SlapjackGame game;
 
     @Nullable
     @Override
@@ -54,6 +55,7 @@ public class SlapjackFragment extends Fragment {
         {
             playerCardListDeck.add(completeDeckFromJson.get(b));
         }
+        game = new SlapjackGame(robotCardListDeck, playerCardListDeck);
         // verify that it read everything properly
         // pls work
         // inflate the fragment pythagorean layout
