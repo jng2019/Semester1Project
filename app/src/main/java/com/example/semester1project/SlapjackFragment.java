@@ -30,6 +30,7 @@ public class SlapjackFragment extends Fragment {
     private List<Card> robotCardListDeck;
     private List<Card> playerCardListDeck;
     private SlapjackGame game;
+    private boolean playerTurn; // player turn is true, robot turn is false
 
     @Nullable
     @Override
@@ -63,7 +64,7 @@ public class SlapjackFragment extends Fragment {
 //        super.onCreateView(inflater, container, savedInstanceState);
         // wire widgets using that layout
         wireWidgets(rootView);
-
+        setOnClickListeners();
         // set any listeners for those widgets
         buttonSlap.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -76,6 +77,17 @@ public class SlapjackFragment extends Fragment {
 
 
 //         return super.onCreateView(inflater, container, savedInstanceState);
+    }
+
+    private void setOnClickListeners() {
+        buttonSlap.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (playerTurn){
+
+                }
+            }
+        });
     }
 
     private void wireWidgets(View rootView) {
