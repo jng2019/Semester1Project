@@ -1,5 +1,6 @@
 package com.example.semester1project;
 
+import android.media.Image;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -8,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -26,6 +28,12 @@ import java.util.List;
 public class SlapjackFragment extends Fragment {
 
     private Button buttonSlap;
+    private ImageView imageViewPlayerDeck;
+    private ImageView imageViewComputerDeck;
+    private ImageView imageViewFirstCard;
+    private ImageView imageViewSecondCard;
+    private ImageView imageViewThirdCard;
+
     private List<Card> completeDeckFromJson;
     private List<Card> robotCardListDeck;
     private List<Card> playerCardListDeck;
