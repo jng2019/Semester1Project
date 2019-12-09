@@ -29,8 +29,10 @@ public class SlapjackFragment extends Fragment {
     private List<Card> completeDeckFromJson;
     private List<Card> robotCardListDeck;
     private List<Card> playerCardListDeck;
+    private List<Card> pileList;
     private SlapjackGame game;
     private boolean playerTurn; // player turn is true, robot turn is false
+    private boolean isCombo = false;
 
     @Nullable
     @Override
