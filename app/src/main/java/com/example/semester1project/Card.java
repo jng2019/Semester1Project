@@ -8,8 +8,9 @@ public class Card {
     private String suit;
     private String image;
 
-    public Card(){
-
+    public Card(int value, String suit){
+        this.value = value;
+        this.suit = suit;
     }
 
     public String getImage() {
