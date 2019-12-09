@@ -19,9 +19,7 @@ public class SlapjackGame {
 
     public SlapjackGame(List<Card> robotList, List<Card> playerList){
         this.robotList = robotList;
-        this.playerList = playerList;
-        pileList = new ArrayList<>();
-    }
+        this.playerList = playerList; }
 
     private void removeCard(boolean playerTurn){
         if (playerTurn) {

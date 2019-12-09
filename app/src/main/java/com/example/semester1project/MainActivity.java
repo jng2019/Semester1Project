@@ -5,6 +5,7 @@ import android.os.Bundle;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 
+import android.util.Log;
 import android.view.View;
 
 import androidx.core.view.GravityCompat;
@@ -33,6 +34,9 @@ import java.util.List;
 
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
+
+    public static final String TAG = MainActivity.class.getSimpleName();
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -112,6 +116,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             fm.beginTransaction()
                     .replace(R.id.constraintlayout_main_container, fragment)
                     .commit();
+            Log.d(TAG, "onNavigationItemSelected: fhelp me if you see this it's working");
         }
 
         DrawerLayout drawer = findViewById(R.id.drawer_layout);

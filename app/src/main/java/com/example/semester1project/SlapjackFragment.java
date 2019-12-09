@@ -39,7 +39,7 @@ public class SlapjackFragment extends Fragment {
     private List<Card> playerCardListDeck;
     private List<Card> pileList;
     private SlapjackGame game;
-    private boolean playerTurn; // player turn is true, robot turn is false
+    private boolean playerTurn = true; // player turn is true, robot turn is false
     private boolean isCombo = false;
 
     @Nullable
@@ -75,18 +75,21 @@ public class SlapjackFragment extends Fragment {
         // wire widgets using that layout
         wireWidgets(rootView);
         setOnClickListeners();
+        updateDisplay();
         // set any listeners for those widgets
-        buttonSlap.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
 
-            }
-        });
         // return the inflated view
         return rootView;
 
 
 //         return super.onCreateView(inflater, container, savedInstanceState);
+    }
+
+    private void updateDisplay() {
+        for (int i = pileList.size() - 1; i >= 0; i--) {
+            int resourceImage = getResources().getIdentifier(pileList.get(i).getImage(), "drawable", getActivity().getPackageName());
+            imageViewPlayerDeck.setImageDrawable(getResources().getDrawable(resourceImage));
+        }
     }
 
     private void setOnClickListeners() {
@@ -102,6 +105,11 @@ public class SlapjackFragment extends Fragment {
 
     private void wireWidgets(View rootView) {
         buttonSlap = rootView.findViewById(R.id.button_slapjack_slap);
+        imageViewPlayerDeck = rootView.findViewById(R.id.imageView);
+        imageViewComputerDeck = rootView.findViewById(R.id.imageView_robotDeck_slapjack);
+        imageViewFirstCard = rootView.findViewById(R.id.imageView_rightCard_slapjack);
+        imageViewSecondCard = rootView.findViewById(R.id.imageView_middleCard_slapjack);
+        imageViewThirdCard = rootView.findViewById(R.id.imageView_leftCard_slapjack );
     }
 
     public String readTextFile(InputStream inputStream) {

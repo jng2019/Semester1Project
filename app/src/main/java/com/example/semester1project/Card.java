@@ -1,8 +1,10 @@
 package com.example.semester1project;
 
+import android.os.Parcelable;
+
 import static java.lang.Integer.parseInt;
 
-public class Card {
+public class Card{
     private int value;
     private String letter;
     private String suit;
