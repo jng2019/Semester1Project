@@ -10,6 +10,7 @@ import java.util.Arrays;
 import java.util.List;
 
 public class SlapjackGame {
+    // xd
     private List<Card> robotList;
     private List<Card> playerList;
     private List<Card> pileList;
