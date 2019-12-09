@@ -26,7 +26,7 @@ public class SlapjackGame {
     private void removeCard(boolean playerTurn){
         if (playerTurn) {
             pileList.add(playerList.get(playerList.size() - 1));
-            // get the top card from player list to add to the pilelist
+            // get the top card from player list to add to the pileList
         }
 
         if (!playerTurn){
@@ -47,7 +47,7 @@ public class SlapjackGame {
         }
     }
 
-    private void checkForCombo(){
+    private void checkForCombo() {
         // delete the previous combo is there are no matches
         if ((pileList.size() > 1)) {
             if ((pileList.get(pileList.size() - 2)).getNumber() == pileList.get(pileList.size() - 1).getNumber()) {
