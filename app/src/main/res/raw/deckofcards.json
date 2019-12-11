@@ -2,273 +2,273 @@
   {
     "suit": "hearts",
     "value": "2",
-    "image": "2h"
+    "image": "twoH"
   },
   {
     "suit": "hearts",
     "value": "3",
-    "image": "3h"
+    "image": "threeH"
   },
   {
     "suit": "hearts",
     "value": "4",
-    "image": "4h"
+    "image": "fourH"
   },
   {
     "suit": "hearts",
     "value": "5",
-    "image": "5h"
+    "image": "fiveH"
   },
   {
     "suit": "hearts",
     "value": "6",
-    "image": "6h"
+    "image": "sixH"
   },
   {
     "suit": "hearts",
     "value": "7",
-    "image": "7h"
+    "image": "sevenH"
   },
   {
     "suit": "hearts",
     "value": "8",
-    "image": "8h"
+    "image": "eightH"
   },
   {
     "suit": "hearts",
     "value": "9",
-    "image": "9h"
+    "image": "nineH"
   },
   {
     "suit": "hearts",
     "value": "10",
-    "image": "10h"
+    "image": "tenH"
   },
   {
     "suit": "hearts",
     "value": "11",
-    "image": "11h"
+    "image": "jackH"
   },
   {
     "suit": "hearts",
     "value": "12",
-    "image": "12h"
+    "image": "queenH"
   },
   {
     "suit": "hearts",
     "value": "13",
-    "image": "13h"
+    "image": "kingH"
   },
   {
     "suit": "hearts",
     "value": "14",
-    "image": "14h"
+    "image": "aceH"
   },
   {
     "suit": "diamonds",
     "value": "2",
-    "image": "2d"
+    "image": "twoD"
   },
   {
     "suit": "diamonds",
     "value": "3",
-    "image": "3d"
+    "image": "threeD"
   },
   {
     "suit": "diamonds",
     "value": "4",
-    "image": "4d"
+    "image": "fourD"
   },
   {
     "suit": "diamonds",
     "value": "5",
-    "image": "5d"
+    "image": "fiveD"
   },
   {
     "suit": "diamonds",
     "value": "6",
-    "image": "6d"
+    "image": "sixD"
   },
   {
     "suit": "diamonds",
     "value": "7",
-    "image": "7d"
+    "image": "sevenD"
   },
   {
     "suit": "diamonds",
     "value": "8",
-    "image": "8d"
+    "image": "eightD"
   },
   {
     "suit": "diamonds",
     "value": "9",
-    "image": "9d"
+    "image": "nineD"
   },
   {
     "suit": "diamonds",
     "value": "10",
-    "image": "10d"
+    "image": "tenD"
   },
   {
     "suit": "diamonds",
     "value": "11",
-    "image": "11d"
+    "image": "jackD"
   },
   {
     "suit": "diamonds",
     "value": "12",
-    "image": "12d"
+    "image": "queenD"
   },
   {
     "suit": "diamonds",
     "value": "13",
-    "image": "13d"
+    "image": "kingD"
   },
   {
     "suit": "diamonds",
     "value": "14",
-    "image": "14d"
+    "image": "aceD"
   },
   {
     "suit": "clubs",
     "value": "2",
-    "image": "2c"
+    "image": "twoC"
   },
   {
     "suit": "clubs",
     "value": "3",
-    "image": "3c"
+    "image": "threeC"
   },
   {
     "suit": "clubs",
     "value": "4",
-    "image": "4c"
+    "image": "fourC"
   },
   {
     "suit": "clubs",
     "value": "5",
-    "image": "5c"
+    "image": "fiveC"
   },
   {
     "suit": "clubs",
     "value": "6",
-    "image": "6c"
+    "image": "sixC"
   },
   {
     "suit": "clubs",
     "value": "7",
-    "image": "7c"
+    "image": "sevenC"
   },
   {
     "suit": "clubs",
     "value": "8",
-    "image": "8c"
+    "image": "eightC"
   },
   {
     "suit": "clubs",
     "value": "9",
-    "image": "9c"
+    "image": "nineC"
   },
   {
     "suit": "clubs",
     "value": "10",
-    "image": "10c"
+    "image": "tenC"
   },
   {
     "suit": "clubs",
     "value": "11",
-    "image": "11c"
+    "image": "jackC"
   },
   {
     "suit": "clubs",
     "value": "12",
-    "image": "12c"
+    "image": "queenC"
   },
   {
     "suit": "clubs",
     "value": "13",
-    "image": "13c"
+    "image": "kingC"
   },
   {
     "suit": "clubs",
     "value": "14",
-    "image": "14c"
+    "image": "aceC"
   },
   {
     "suit": "spades",
     "value": "2",
-    "image": "2s"
+    "image": "twoS"
   },
   {
     "suit": "spades",
     "value": "3",
-    "image": "3s"
+    "image": "threeS"
 
   },
   {
     "suit": "spades",
     "value": "4",
-    "image": "4s"
+    "image": "fourS"
 
   },
   {
     "suit": "spades",
     "value": "5",
-    "image": "5s"
+    "image": "fiveS"
 
   },
   {
     "suit": "spades",
     "value": "6",
-    "image": "6s"
+    "image": "sixS"
 
   },
   {
     "suit": "spades",
     "value": "7",
-    "image": "7s"
+    "image": "sevenS"
 
   },
   {
     "suit": "spades",
     "value": "8",
-    "image": "8s"
+    "image": "eightS"
 
   },
   {
     "suit": "spades",
     "value": "9",
-    "image": "9s"
+    "image": "nineS"
 
   },
   {
     "suit": "spades",
     "value": "10",
-    "image": "10s"
+    "image": "tenS"
 
   },
   {
     "suit": "spades",
     "value": "11",
-    "image": "11s"
+    "image": "jackS"
 
   },
   {
     "suit": "spades",
     "value": "12",
-    "image": "12s"
+    "image": "queenS"
 
   },
   {
     "suit": "spades",
     "value": "13",
-    "image": "13s"
+    "image": "kingS"
 
   },
   {
     "suit": "spades",
     "value": "14",
-    "image": "14s"
+    "image": "aceS"
 
   }
 ]
