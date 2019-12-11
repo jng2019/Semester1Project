@@ -20,8 +20,8 @@
 
     <ImageView
         android:id="@+id/imageView_robotDeck_slapjack"
-        android:layout_width="150"
-        android:layout_height="200"
+        android:layout_width="150dp"
+        android:layout_height="200dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
@@ -82,8 +82,8 @@
 
     <ImageView
         android:id="@+id/imageView_playerDeck_slapjack"
-        android:layout_width="150"
-        android:layout_height="200"
+        android:layout_width="150dp"
+        android:layout_height="200dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
