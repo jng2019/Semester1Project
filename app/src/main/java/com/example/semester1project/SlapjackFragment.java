@@ -75,7 +75,7 @@ public class SlapjackFragment extends Fragment {
         // wire widgets using that layout
         wireWidgets(rootView);
         setOnClickListeners();
-        updateDisplay();
+        setDisplay();
         // set any listeners for those widgets
 
         // return the inflated view
@@ -83,6 +83,13 @@ public class SlapjackFragment extends Fragment {
 
 
 //         return super.onCreateView(inflater, container, savedInstanceState);
+    }
+
+    private void setDisplay() {
+        int resourceImagePLayer = getResources().getIdentifier(playerCardListDeck.get(playerCardListDeck.size()-1).getImage(), "drawable", getActivity().getPackageName());
+        imageViewPlayerDeck.setImageDrawable(getResources().getDrawable(resourceImagePLayer));
+        int resourceImageRobot = getResources().getIdentifier(robotCardListDeck.get(robotCardListDeck.size() - 1).getImage(), "drawable", getActivity().getPackageName());
+        imageViewComputerDeck.setImageDrawable(getResources().getDrawable(resourceImageRobot));
     }
 
     private void updateDisplay() {
