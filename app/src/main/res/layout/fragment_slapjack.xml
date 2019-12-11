@@ -20,6 +20,7 @@
 
     <ImageView
         android:id="@+id/imageView_robotDeck_slapjack"
+        android:src="@drawable/purple_back"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -81,6 +82,7 @@
 
     <ImageView
         android:id="@+id/imageView_playerDeck_slapjack"
+        android:src="@drawable/purple_back"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"

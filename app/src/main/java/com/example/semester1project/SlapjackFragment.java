@@ -94,12 +94,6 @@ public class SlapjackFragment extends Fragment {
                 imageViewPlayerDeck.setImageDrawable(getResources().getDrawable(resourceImage));
             }
         }
-        if (pileList == null){
-            int resourceImagePlayerDeck = getResources().getIdentifier(, "drawable", getActivity().getPackageName());
-            imageViewPlayerDeck.setImageDrawable(getResources().getDrawable(resourceImagePlayerDeck));
-            int resourceImageRobotDeck = getResources().getIdentifier(pileList.get(i).getImage(), "drawable", getActivity().getPackageName());
-            imageViewComputerDeck.setImageDrawable(getResources().getDrawable(resourceImageRobotDeck));
-        }
     }
 
     private void setOnClickListeners() {
