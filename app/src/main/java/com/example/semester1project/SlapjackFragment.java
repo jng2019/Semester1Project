@@ -81,6 +81,7 @@ public class SlapjackFragment extends Fragment {
         // return the inflated view
         return rootView;
 
+        //xd
 
 //         return super.onCreateView(inflater, container, savedInstanceState);
     }
