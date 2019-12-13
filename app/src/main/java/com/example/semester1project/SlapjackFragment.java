@@ -12,6 +12,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -36,9 +37,6 @@ public class SlapjackFragment extends Fragment {
     private ImageView imageViewThirdCard;
 
     private List<Card> completeDeckFromJson;
-    private List<Card> robotCardListDeck;
-    private List<Card> playerCardListDeck;
-    private List<Card> pileList;
     private SlapjackGame game;
     private boolean playerTurn = true; // player turn is true, robot turn is false
     private boolean isCombo = false;
@@ -55,8 +53,9 @@ public class SlapjackFragment extends Fragment {
         Card[] cards = gson.fromJson(jsonString, Card[].class);
         // convert your array to a list using the Arrays utility class
         completeDeckFromJson = Arrays.asList(cards);
-        robotCardListDeck = new ArrayList<>();
-        playerCardListDeck = new ArrayList<>();
+        ArrayList<Card> robotCardListDeck = new ArrayList<>();
+        ArrayList<Card> playerCardListDeck = new ArrayList<>();
+        ArrayList<Card> pileList = new ArrayList<>();
         int a;
         for (a = completeDeckFromJson.size() - 26; a >= 0; a--)
         {
@@ -102,7 +101,7 @@ public class SlapjackFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 if (playerTurn){
-
+                    Toast.makeText(this, "whats going on",10)
                 }
             }
         });
