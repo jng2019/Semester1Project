@@ -98,7 +98,8 @@ public class SlapjackFragment extends Fragment{
             @Override
             public void onClick(View v) {
                 if (playerTurn){
-
+                    game.;
+                    updateDisplay();
                 }
             }
         });
