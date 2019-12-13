@@ -27,7 +27,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class SlapjackFragment extends Fragment {
+public class SlapjackFragment extends Fragment{
 
     private Button buttonSlap;
     private ImageView imageViewPlayerDeck;
@@ -40,6 +40,7 @@ public class SlapjackFragment extends Fragment {
     private SlapjackGame game;
     private boolean playerTurn = true; // player turn is true, robot turn is false
     private boolean isCombo = false;
+    private ArrayList<Card> pileList;
 
     @Nullable
     @Override
@@ -55,7 +56,7 @@ public class SlapjackFragment extends Fragment {
         completeDeckFromJson = Arrays.asList(cards);
         ArrayList<Card> robotCardListDeck = new ArrayList<>();
         ArrayList<Card> playerCardListDeck = new ArrayList<>();
-        ArrayList<Card> pileList = new ArrayList<>();
+        pileList = new ArrayList<>();
         int a;
         for (a = completeDeckFromJson.size() - 26; a >= 0; a--)
         {
@@ -80,12 +81,8 @@ public class SlapjackFragment extends Fragment {
         // return the inflated view
         return rootView;
 
-        //xd
-
 //         return super.onCreateView(inflater, container, savedInstanceState);
     }
-
-
 
     private void updateDisplay() {
         if (pileList != null) {
@@ -101,7 +98,7 @@ public class SlapjackFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 if (playerTurn){
-                    Toast.makeText(this, "whats going on",10)
+
                 }
             }
         });

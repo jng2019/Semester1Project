@@ -21,7 +21,7 @@ public class SlapjackGame {
         this.robotList = robotList;
         this.playerList = playerList; }
 
-    private void removeCard(boolean playerTurn){
+    public void removeCard(boolean playerTurn){
         if (playerTurn) {
             pileList.add(playerList.get(playerList.size() - 1));
             // get the top card from player list to add to the pileList
@@ -32,11 +32,11 @@ public class SlapjackGame {
         }
     }
 
-    private boolean getTurn(){
+    public boolean getTurn(){
         return playerTurn;
     }
 
-    private boolean checkEndGame(){
+    public boolean checkEndGame(){
         if (playerList.size() == 0 || robotList.size() == 0){
             return true;
         }
@@ -45,7 +45,7 @@ public class SlapjackGame {
         }
     }
 
-    private void checkForCombo() {
+    public void checkForCombo() {
         // delete the previous combo is there are no matches
         if ((pileList.size() > 1)) {
             if ((pileList.get(pileList.size() - 2)).getNumber() == pileList.get(pileList.size() - 1).getNumber()) {
@@ -60,7 +60,7 @@ public class SlapjackGame {
 
     }
 
-    private void moveCards(List<Card> winnerList){
+    public void moveCards(List<Card> winnerList){
         for (int i = pileList.size() - 1; i >= 0; i--){
             winnerList.add(0, pileList.get(i));
         }
