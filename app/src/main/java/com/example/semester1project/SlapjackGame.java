@@ -21,7 +21,7 @@ public class SlapjackGame {
         this.robotList = robotList;
         this.playerList = playerList; }
 
-    public void removeCard(boolean playerTurn){
+    public void removeCard(boolean playerTurn){ // change the paramter to a arraylist
         if (playerTurn) {
             pileList.add(playerList.get(playerList.size() - 1));
             // get the top card from player list to add to the pileList
@@ -60,7 +60,7 @@ public class SlapjackGame {
 
     }
 
-    public void moveCards(List<Card> winnerList){
+    public void moveCardsToWinner(List<Card> winnerList){
         for (int i = pileList.size() - 1; i >= 0; i--){
             winnerList.add(0, pileList.get(i));
         }
