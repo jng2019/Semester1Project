@@ -26,6 +26,7 @@ import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Random;
 
 public class SlapjackFragment extends Fragment{
 
@@ -41,6 +42,7 @@ public class SlapjackFragment extends Fragment{
     private boolean playerTurn = true; // player turn is true, robot turn is false
     private boolean isCombo = false;
     private ArrayList<Card> pileList;
+    private Random generator = new Random();
 
     @Nullable
     @Override
@@ -54,6 +56,13 @@ public class SlapjackFragment extends Fragment{
         Card[] cards = gson.fromJson(jsonString, Card[].class);
         // convert your array to a list using the Arrays utility class
         completeDeckFromJson = Arrays.asList(cards);
+        // shuffle the cards
+        for (int i = 0; i < completeDeckFromJson.size(); i++)
+        {
+            int randomIndex = generator.nextInt(completeDeckFromJson.size() - 1);
+            completeDeckFromJson.set(i, completeDeckFromJson.get(randomIndex));
+        }
+        // split the cards into two piles; one for the player, one for the cpu
         ArrayList<Card> robotCardListDeck = new ArrayList<>();
         ArrayList<Card> playerCardListDeck = new ArrayList<>();
         pileList = new ArrayList<>();
@@ -89,6 +98,10 @@ public class SlapjackFragment extends Fragment{
             for (int i = pileList.size() - 1; i >= 0; i--) {
                 int resourceImage = getResources().getIdentifier(pileList.get(i).getImage(), "drawable", getActivity().getPackageName());
                 imageViewPlayerDeck.setImageDrawable(getResources().getDrawable(resourceImage));
+//                imageViewComputerDeck.setImageDrawable();
+//                imageViewFirstCard.setImageDrawable();
+//                imageViewSecondCard.setImageDrawable();
+//                imageViewThirdCard.setImageDrawable();
             }
         }
     }
@@ -98,7 +111,7 @@ public class SlapjackFragment extends Fragment{
             @Override
             public void onClick(View v) {
                 if (playerTurn){
-                    game.putBrain;
+//                    game.putBrain;
                     updateDisplay();
                 }
             }
