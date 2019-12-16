@@ -16,25 +16,12 @@ public class SlapjackGame {
 
     public void playCard(List<Card> deck) {
         // basically burnCard method but the card goes to the top (last index)
-        if (playerTurn) {
-            // put top card from playerList to pileList
-            pileList.add(playerList.get(playerList.size() - 1));
-        }
-        if (!playerTurn){
-            // put top card from robotList to pileList
-            pileList.add(robotList.get(playerList.size() - 1));
-        }
+            pileList.add(deck.get(deck.size() - 1));
     }
 
-    public void burnCard() {
+    public void burnCard(List<Card> deck) {
         // basically playCard method but the card goes to the bottom (first index)
-        if (playerTurn) {
-            pileList.add(0, playerList.get(playerList.size() - 1));
-        }
-        if (!playerTurn){
-            // put top card from robotList to pileList
-            pileList.add(0, robotList.get(playerList.size() - 1));
-        }
+            pileList.add(0, deck.get(deck.size() - 1));
     }
 
     public void moveCardsToWinner(List<Card> winnerList){
@@ -56,23 +43,25 @@ public class SlapjackGame {
         }
     }
 
-    public void checkForCombo() {
+    // changed this method to return boolean combo after changing the value of combo
+    public boolean checkForCombo() {
         // delete the previous combo if there are no matches
-        // checking for jacks
-        if (pileList.get(pileList.size() - 1).getNumber() == 11) {
-            combo = true;
-        }
-        // checking for doubles
-        if ((pileList.size() > 1)) {
-            if ((pileList.get(pileList.size() - 2)).getNumber() == pileList.get(pileList.size() - 1).getNumber()) {
-                combo = true;
-            }
-        }
         // checking for sandwiches
         if (pileList.size() > 2){
             if (pileList.get(pileList.size()- 3).getNumber() == pileList.get(pileList.size() - 1).getNumber()){
                 combo = true;
             }
         }
+        // checking for doubles
+        else if ((pileList.size() > 1)) {
+            if ((pileList.get(pileList.size() - 2)).getNumber() == pileList.get(pileList.size() - 1).getNumber()) {
+                combo = true;
+            }
+        }
+        // checking for jacks
+        else {
+            combo = pileList.get(pileList.size() - 1).getNumber() == 11;
+        }
+        return combo;
     }
 }

@@ -3,6 +3,7 @@ package com.example.semester1project;
 import android.graphics.drawable.Drawable;
 import android.media.Image;
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.LayoutInflater;
@@ -47,7 +48,8 @@ public class SlapjackFragment extends Fragment{
     private ArrayList<Card> pileList;
     private Random generator = new Random();
 
-//    private Chronometer timer;
+    private CountDownTimer timer;
+    private boolean playerClickedDuringDelay;
 //    private int cpuEasy;
 //    private int cpuMedium;
 //    private int cpuHard;
@@ -85,7 +87,6 @@ public class SlapjackFragment extends Fragment{
             playerDeck.add(completeDeckFromJson.get(b));
         }
         game = new SlapjackGame(robotDeck, playerDeck);
-//        timer.start();
         // verify that it read everything properly
         // pls work
         // inflate the fragment pythagorean layout
@@ -118,21 +119,58 @@ public class SlapjackFragment extends Fragment{
         buttonSlap.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                isCombo = game.checkForCombo(); // check for combo
+                // first click
                 if (pileList == null) {
                     game.playCard(playerDeck);
-                }
-                if (playerTurn){
-
                     updateDisplay();
+                    playerTurn = false;
                 }
+                // all following clicks
+                else {
+                    isCombo = game.checkForCombo();
+                    if (playerTurn){
+
+                        if (isCombo) {
+
+                        }
+                        else {
+
+                        }
+                        updateDisplay();
+                    }
+                }
+                // pause before cpu's turn
+                isCombo = game.checkForCombo(); // check for combo
+                // the time between the turns when there might be a combo
+                timer = new CountDownTimer(1000, 1) {
+                    @Override
+                    public void onTick(long l) {
+                        // check if player slaps
+                        if (playerClickedDuringDelay){
+                            // if player slaps combo, they get the pile
+                            if (isCombo) {
+                                game.moveCardsToWinner(playerDeck);
+                                playerTurn = true;
+                            }
+                            // if player slaps !combo, they burn
+                            else {
+                                game.burnCard(playerDeck);
+                            }
+                            timer.cancel();
+                        }
+                    }
+                    // only get to onFinish() if the player did not slap after a turn
+                    @Override
+                    public void onFinish() {
+                        if (isCombo) {
+                            game.moveCardsToWinner(robotDeck);
+                        }
+                    }
+                };
+                updateDisplay();
             }
         });
-//        timer.setOnChronometerTickListener(new Chronometer.OnChronometerTickListener() {
-//            @Override
-//            public void onChronometerTick(Chronometer chronometer) {
-//                cpuEasy++;
-//            }
-//        });
     }
 
     private void wireWidgets(View rootView) {
@@ -159,13 +197,5 @@ public class SlapjackFragment extends Fragment{
 
         }
         return outputStream.toString();
-    }
-
-    public void delay(int millisDelay) {
-        try {
-            Thread.sleep(millisDelay);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
     }
 }
