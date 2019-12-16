@@ -9,6 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.Chronometer;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -43,6 +44,8 @@ public class SlapjackFragment extends Fragment{
     private boolean isCombo = false;
     private ArrayList<Card> pileList;
     private Random generator = new Random();
+
+    private Chronometer timer;
 
     @Nullable
     @Override

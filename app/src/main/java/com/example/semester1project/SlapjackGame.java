@@ -14,14 +14,32 @@ public class SlapjackGame {
         this.robotList = robotList;
         this.playerList = playerList; }
 
-    public void playCard(List<Card> middlePile) {
+    public void playCard() {
+        // basically burnCard method but the card goes to the top (last index)
         if (playerTurn) {
+            // put top card from playerList to pileList
             pileList.add(playerList.get(playerList.size() - 1));
-            // get the top card from player list to add to the pileList
         }
-
         if (!playerTurn){
+            // put top card from robotList to pileList
             pileList.add(robotList.get(playerList.size() - 1));
+        }
+    }
+
+    public void burnCard() {
+        // basically playCard method but the card goes to the bottom (first index)
+        if (playerTurn) {
+            pileList.add(0, playerList.get(playerList.size() - 1));
+        }
+        if (!playerTurn){
+            // put top card from robotList to pileList
+            pileList.add(0, robotList.get(playerList.size() - 1));
+        }
+    }
+
+    public void moveCardsToWinner(List<Card> winnerList){
+        for (int i = pileList.size() - 1; i >= 0; i--){
+            winnerList.add(0, pileList.get(i));
         }
     }
 
@@ -57,11 +75,4 @@ public class SlapjackGame {
             }
         }
     }
-
-    public void moveCardsToWinner(List<Card> winnerList){
-        for (int i = pileList.size() - 1; i >= 0; i--){
-            winnerList.add(0, pileList.get(i));
-        }
-    }
-
 }
