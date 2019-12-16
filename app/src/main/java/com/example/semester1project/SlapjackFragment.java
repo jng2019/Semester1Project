@@ -39,13 +39,18 @@ public class SlapjackFragment extends Fragment{
     private ImageView imageViewThirdCard;
 
     private List<Card> completeDeckFromJson;
+    private List<Card> playerDeck;
+    private List<Card> robotDeck;
     private SlapjackGame game;
     private boolean playerTurn = true; // player turn is true, robot turn is false
     private boolean isCombo = false;
     private ArrayList<Card> pileList;
     private Random generator = new Random();
 
-    private Chronometer timer;
+//    private Chronometer timer;
+//    private int cpuEasy;
+//    private int cpuMedium;
+//    private int cpuHard;
 
     @Nullable
     @Override
@@ -66,20 +71,21 @@ public class SlapjackFragment extends Fragment{
             completeDeckFromJson.set(i, completeDeckFromJson.get(randomIndex));
         }
         // split the cards into two piles; one for the player, one for the cpu
-        ArrayList<Card> robotCardListDeck = new ArrayList<>();
-        ArrayList<Card> playerCardListDeck = new ArrayList<>();
+        robotDeck = new ArrayList<>();
+        playerDeck = new ArrayList<>();
         pileList = new ArrayList<>();
         int a;
         for (a = completeDeckFromJson.size() - 26; a >= 0; a--)
         {
-            robotCardListDeck.add(completeDeckFromJson.get(a));
+            robotDeck.add(completeDeckFromJson.get(a));
         }
         int b;
         for (b = completeDeckFromJson.size() - 1; b > 26; b--)
         {
-            playerCardListDeck.add(completeDeckFromJson.get(b));
+            playerDeck.add(completeDeckFromJson.get(b));
         }
-        game = new SlapjackGame(robotCardListDeck, playerCardListDeck);
+        game = new SlapjackGame(robotDeck, playerDeck);
+//        timer.start();
         // verify that it read everything properly
         // pls work
         // inflate the fragment pythagorean layout
@@ -87,9 +93,8 @@ public class SlapjackFragment extends Fragment{
 //        super.onCreateView(inflater, container, savedInstanceState);
         // wire widgets using that layout
         wireWidgets(rootView);
-        setOnClickListeners();
         // set any listeners for those widgets
-
+        setOnClickListeners();
         // return the inflated view
         return rootView;
 
@@ -113,12 +118,21 @@ public class SlapjackFragment extends Fragment{
         buttonSlap.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if (pileList == null) {
+                    game.playCard(playerDeck);
+                }
                 if (playerTurn){
-//                    game.putBrain;
+
                     updateDisplay();
                 }
             }
         });
+//        timer.setOnChronometerTickListener(new Chronometer.OnChronometerTickListener() {
+//            @Override
+//            public void onChronometerTick(Chronometer chronometer) {
+//                cpuEasy++;
+//            }
+//        });
     }
 
     private void wireWidgets(View rootView) {
@@ -145,5 +159,13 @@ public class SlapjackFragment extends Fragment{
 
         }
         return outputStream.toString();
+    }
+
+    public void delay(int millisDelay) {
+        try {
+            Thread.sleep(millisDelay);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 }

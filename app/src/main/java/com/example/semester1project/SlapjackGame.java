@@ -14,7 +14,7 @@ public class SlapjackGame {
         this.robotList = robotList;
         this.playerList = playerList; }
 
-    public void playCard() {
+    public void playCard(List<Card> deck) {
         // basically burnCard method but the card goes to the top (last index)
         if (playerTurn) {
             // put top card from playerList to pileList
