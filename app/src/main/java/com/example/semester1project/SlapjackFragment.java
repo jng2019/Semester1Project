@@ -91,7 +91,7 @@ public class SlapjackFragment extends Fragment{
         {
             playerDeck.add(completeDeckFromJson.get(b));
         }
-        game = new SlapjackGame(robotDeck, playerDeck);
+        game = new SlapjackGame(robotDeck, playerDeck, pileList);
         // verify that it read everything properly
         // pls work
         // inflate the fragment pythagorean layout
@@ -109,8 +109,8 @@ public class SlapjackFragment extends Fragment{
 
     private void updateDisplay() {
         if (pileList != null) {
-            for (int i = pileList.size() - 1; i >= 0; i--) {
-                int resourceImage = getResources().getIdentifier(pileList.get(i).getImage(), "drawable", getActivity().getPackageName());
+            Log.d(TAG, "updateDisplay: pile list has a value of" + pileList.size() );
+                int resourceImage = getResources().getIdentifier(pileList.get(pileList.size() - 1).getImage(), "drawable", getActivity().getPackageName());
                 imageViewFirstCard.setImageDrawable(ResourcesCompat.getDrawable(getResources(), resourceImage, null));
                 // getResources().getDrawable(resourceImage)
 //                imageViewFirstCard.setImageDrawable(ResourcesCompat.getDrawable(getResources(), resourceImage, null));
@@ -118,7 +118,11 @@ public class SlapjackFragment extends Fragment{
 //                imageViewFirstCard.setImageDrawable();
 //                imageViewSecondCard.setImageDrawable();
 //                imageViewThirdCard.setImageDrawable();
-            }
+                int resourceImage2 = getResources().getIdentifier(pileList.get(pileList.size() - 3).getImage(), "drawable", getActivity().getPackageName());
+                imageViewFirstCard.setImageDrawable(ResourcesCompat.getDrawable(getResources(), resourceImage2, null));
+                int resourceImage3 = getResources().getIdentifier(pileList.get(pileList.size() - 3).getImage(), "drawable", getActivity().getPackageName());
+                imageViewFirstCard.setImageDrawable(ResourcesCompat.getDrawable(getResources(), resourceImage3, null));
+
         }
     }
 
@@ -130,6 +134,7 @@ public class SlapjackFragment extends Fragment{
                 // first click
                 if (pileList == null) {
                     game.playCard(playerDeck);
+                    Log.d(TAG, "onClick: hi if this is working the button is working");
                     updateDisplay();
                     playerTurn = false;
                 }

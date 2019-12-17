@@ -10,9 +10,11 @@ public class SlapjackGame {
     private boolean playerTurn; // true = player's turn, false = robot's turn
     private boolean combo = false;
 
-    public SlapjackGame(List<Card> robotList, List<Card> playerList){
+    public SlapjackGame(List<Card> robotList, List<Card> playerList, List<Card> pileList){
         this.robotList = robotList;
-        this.playerList = playerList; }
+        this.playerList = playerList;
+        this.pileList = pileList;
+    }
 
     public void playCard(List<Card> deck) {
         // basically burnCard method but the card goes to the top (last index)
