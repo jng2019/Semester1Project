@@ -117,8 +117,10 @@ public class SlapjackFragment extends Fragment{
                 int resourceImage2 = getResources().getIdentifier(pileList.get(pileList.size() - 2).getImage(), "drawable", getActivity().getPackageName());
                 imageViewSecondCard.setImageDrawable(ResourcesCompat.getDrawable(getResources(), resourceImage2, null));
             }
-            int resourceImage = getResources().getIdentifier(pileList.get(pileList.size() - 1).getImage(), "drawable", getActivity().getPackageName());
-            imageViewFirstCard.setImageDrawable(ResourcesCompat.getDrawable(getResources(), resourceImage, null));
+            if (pileList.size() > 0) {
+                int resourceImage = getResources().getIdentifier(pileList.get(pileList.size() - 1).getImage(), "drawable", getActivity().getPackageName());
+                imageViewFirstCard.setImageDrawable(ResourcesCompat.getDrawable(getResources(), resourceImage, null));
+            }
                 // getResources().getDrawable(resourceImage)
 //                imageViewFirstCard.setImageDrawable(ResourcesCompat.getDrawable(getResources(), resourceImage, null));
 //                imageViewComputerDeck.setImageDrawable();
@@ -146,17 +148,19 @@ public class SlapjackFragment extends Fragment{
                         if (isCombo) {
                             game.moveCardsToWinner(playerDeck);
                             playerTurn = true;
+                            updateDisplay();
                         }
                         else {
                             game.burnCard(playerDeck);
+                            updateDisplay();
                         }
                         timer.cancel();
                     }
                     else if (playerTurn) {
                         game.playCard(playerDeck);
                         playerTurn = false;
+                        updateDisplay();
                     }
-                    updateDisplay();
                 }
                 // pause before cpu's turn
                 // the time between the turns (there might be a combo)

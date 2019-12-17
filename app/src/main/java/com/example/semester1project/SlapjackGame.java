@@ -1,5 +1,6 @@
 package com.example.semester1project;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class SlapjackGame {
@@ -31,6 +32,7 @@ public class SlapjackGame {
     public void moveCardsToWinner(List<Card> winnerList){
         for (int i = pileList.size() - 1; i >= 0; i--){
             winnerList.add(0, pileList.get(i));
+            pileList.remove(0);
         }
     }
 
