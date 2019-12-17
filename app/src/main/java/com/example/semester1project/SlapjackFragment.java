@@ -42,6 +42,9 @@ public class SlapjackFragment extends Fragment{
     private ImageView imageViewFirstCard;
     private ImageView imageViewSecondCard;
     private ImageView imageViewThirdCard;
+    private TextView cardsLeftRobot;
+    private TextView cardsLeftPlayer;
+    private TextView displayTurn;
 
     private List<Card> completeDeckFromJson;
     private List<Card> playerDeck;
@@ -128,6 +131,9 @@ public class SlapjackFragment extends Fragment{
 //                imageViewSecondCard.setImageDrawable();
 //                imageViewThirdCard.setImageDrawable();
         }
+        displayTurn.setText(String.valueOf(playerTurn));
+        cardsLeftRobot.setText(String.valueOf(robotDeck.size());
+        cardsLeftPlayer.setText(String.valueOf(playerDeck.size()));
     }
 
     private void setOnClickListeners() {
@@ -156,7 +162,7 @@ public class SlapjackFragment extends Fragment{
                         }
                         timer.cancel();
                     }
-                    else if (playerTurn) {
+                    else {
                         game.playCard(playerDeck);
                         playerTurn = false;
                         updateDisplay();
@@ -199,6 +205,9 @@ public class SlapjackFragment extends Fragment{
         imageViewFirstCard = rootView.findViewById(R.id.imageView_rightCard_slapjack);
         imageViewSecondCard = rootView.findViewById(R.id.imageView_middleCard_slapjack);
         imageViewThirdCard = rootView.findViewById(R.id.imageView_leftCard_slapjack );
+        cardsLeftPlayer = rootView.findViewById(R.id.cardsPlayer_textview_slapjack);
+        cardsLeftRobot = rootView.findViewById(R.id.cards_Robot_slapJack_);
+        displayTurn = rootView.findViewById(R.id.textView_playerTurn_slapjack);
     }
 
     public String readTextFile(InputStream inputStream) {
