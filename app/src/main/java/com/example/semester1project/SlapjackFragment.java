@@ -81,7 +81,7 @@ public class SlapjackFragment extends Fragment{
         playerDeck = new ArrayList<>();
         pileList = new ArrayList<>();
         int a;
-        for (a = completeDeckFromJson.size() - 26; a >= 0; a--)
+        for (a = completeDeckFromJson.size() - 27; a >= 0; a--)
         {
             robotDeck.add(completeDeckFromJson.get(a));
         }

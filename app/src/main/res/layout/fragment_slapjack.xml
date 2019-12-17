@@ -9,8 +9,8 @@
         android:id="@+id/button_slapjack_slap"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:text=""
         android:background="@android:color/transparent"
+        android:text=""
         android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -95,4 +95,38 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.984"
         tools:srcCompat="@tools:sample/avatars" />
+
+    <TextView
+        android:id="@+id/cards_Robot_slapJack_"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="58dp"
+        android:layout_marginTop="84dp"
+        android:layout_marginBottom="628dp"
+        android:text="@string/cardsLeftRobot"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/cardsPlayer_textview_slapjack"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="59dp"
+        android:layout_marginTop="630dp"
+        android:text="@string/cardsLeftPlayer"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView_playerTurn_slapjack"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="177dp"
+        android:layout_marginTop="228dp"
+        android:layout_marginBottom="484dp"
+        android:text="@string/Turn"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
