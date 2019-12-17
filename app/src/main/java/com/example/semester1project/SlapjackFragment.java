@@ -53,8 +53,7 @@ public class SlapjackFragment extends Fragment{
     private Random generator = new Random();
 
     private CountDownTimer timer;
-    private boolean isRunning;
-    private boolean playerClickedDuringDelay;
+    private boolean isRunning = false;
 //    private int cpuEasy;
 //    private int cpuMedium;
 //    private int cpuHard;
@@ -122,7 +121,6 @@ public class SlapjackFragment extends Fragment{
                 imageViewFirstCard.setImageDrawable(ResourcesCompat.getDrawable(getResources(), resourceImage2, null));
                 int resourceImage3 = getResources().getIdentifier(pileList.get(pileList.size() - 3).getImage(), "drawable", getActivity().getPackageName());
                 imageViewFirstCard.setImageDrawable(ResourcesCompat.getDrawable(getResources(), resourceImage3, null));
-
         }
     }
 
