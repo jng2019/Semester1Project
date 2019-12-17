@@ -49,6 +49,7 @@ public class SlapjackFragment extends Fragment{
     private Random generator = new Random();
 
     private CountDownTimer timer;
+    private boolean isRunning;
     private boolean playerClickedDuringDelay;
 //    private int cpuEasy;
 //    private int cpuMedium;
@@ -128,46 +129,40 @@ public class SlapjackFragment extends Fragment{
                 }
                 // all following clicks
                 else {
-                    isCombo = game.checkForCombo();
-                    if (playerTurn){
-
+                    if (isRunning) {
                         if (isCombo) {
-
+                            game.moveCardsToWinner(playerDeck);
+                            playerTurn = true;
                         }
                         else {
-
+                            game.burnCard(playerDeck);
                         }
-                        updateDisplay();
+                        timer.cancel();
                     }
+                    else if (playerTurn) {
+                        game.playCard(playerDeck);
+                        playerTurn = false;
+                    }
+                    updateDisplay();
                 }
                 // pause before cpu's turn
-                isCombo = game.checkForCombo(); // check for combo
-                // the time between the turns when there might be a combo
-                timer = new CountDownTimer(1000, 1) {
+                // the time between the turns (there might be a combo)
+                timer = new CountDownTimer(2000, 1) {
                     @Override
                     public void onTick(long l) {
-                        // check if player slaps
-                        if (playerClickedDuringDelay){
-                            // if player slaps combo, they get the pile
-                            if (isCombo) {
-                                game.moveCardsToWinner(playerDeck);
-                                playerTurn = true;
-                            }
-                            // if player slaps !combo, they burn
-                            else {
-                                game.burnCard(playerDeck);
-                            }
-                            timer.cancel();
-                        }
+                        // boolean flag to indicate that the timer is running
+                        isRunning = true;
                     }
                     // only get to onFinish() if the player did not slap after a turn
                     @Override
                     public void onFinish() {
                         if (isCombo) {
+                            isRunning = false;
                             game.moveCardsToWinner(robotDeck);
+                            playerTurn = false;
                         }
                     }
-                };
+                }.start();
                 updateDisplay();
             }
         });
