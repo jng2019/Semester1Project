@@ -117,10 +117,14 @@ public class SlapjackFragment extends Fragment{
 //                imageViewFirstCard.setImageDrawable();
 //                imageViewSecondCard.setImageDrawable();
 //                imageViewThirdCard.setImageDrawable();
-                int resourceImage2 = getResources().getIdentifier(pileList.get(pileList.size() - 3).getImage(), "drawable", getActivity().getPackageName());
+            if (pileList.size() > 1) {
+                int resourceImage2 = getResources().getIdentifier(pileList.get(pileList.size() - 2).getImage(), "drawable", getActivity().getPackageName());
                 imageViewFirstCard.setImageDrawable(ResourcesCompat.getDrawable(getResources(), resourceImage2, null));
+            }
+            if (pileList.size() > 2) {
                 int resourceImage3 = getResources().getIdentifier(pileList.get(pileList.size() - 3).getImage(), "drawable", getActivity().getPackageName());
                 imageViewFirstCard.setImageDrawable(ResourcesCompat.getDrawable(getResources(), resourceImage3, null));
+            }
         }
     }
 
@@ -128,9 +132,8 @@ public class SlapjackFragment extends Fragment{
         buttonSlap.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                isCombo = game.checkForCombo(); // check for combo
                 // first click
-                if (pileList == null) {
+                if (pileList.size() == 0) {
                     game.playCard(playerDeck);
                     Log.d(TAG, "onClick: hi if this is working the button is working");
                     updateDisplay();
@@ -138,6 +141,7 @@ public class SlapjackFragment extends Fragment{
                 }
                 // all following clicks
                 else {
+                    isCombo = game.checkForCombo(); // check for combo
                     if (isRunning) {
                         if (isCombo) {
                             game.moveCardsToWinner(playerDeck);
