@@ -89,7 +89,7 @@ public class SlapjackFragment extends Fragment{
             robotDeck.add(completeDeckFromJson.get(a));
         }
         int b;
-        for (b = completeDeckFromJson.size() - 1; b > 26; b--)
+        for (b = completeDeckFromJson.size() - 1; b > 25; b--)
         {
             playerDeck.add(completeDeckFromJson.get(b));
         }
@@ -132,7 +132,7 @@ public class SlapjackFragment extends Fragment{
 //                imageViewThirdCard.setImageDrawable();
         }
         displayTurn.setText(String.valueOf(playerTurn));
-        cardsLeftRobot.setText(String.valueOf(robotDeck.size());
+        cardsLeftRobot.setText(String.valueOf(robotDeck.size()));
         cardsLeftPlayer.setText(String.valueOf(playerDeck.size()));
     }
 
