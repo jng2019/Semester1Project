@@ -136,6 +136,12 @@ public class SlapjackFragment extends Fragment{
         cardsLeftPlayer.setText(String.valueOf(playerDeck.size()));
     }
 
+    private void clearDisplay() {
+        imageViewFirstCard.setImageResource(android.R.color.transparent);
+        imageViewSecondCard.setImageResource(android.R.color.transparent);
+        imageViewThirdCard.setImageResource(android.R.color.transparent);
+    }
+
     private void setOnClickListeners() {
         buttonSlap.setOnClickListener(new View.OnClickListener() {
             @Override
