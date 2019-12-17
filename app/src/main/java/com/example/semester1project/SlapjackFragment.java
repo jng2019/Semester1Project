@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,6 +19,7 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.core.content.res.ResourcesCompat;
 import androidx.fragment.app.Fragment;
 
 import com.google.gson.Gson;
@@ -29,6 +31,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
+
+import static androidx.constraintlayout.widget.Constraints.TAG;
 
 public class SlapjackFragment extends Fragment{
 
@@ -107,7 +111,9 @@ public class SlapjackFragment extends Fragment{
         if (pileList != null) {
             for (int i = pileList.size() - 1; i >= 0; i--) {
                 int resourceImage = getResources().getIdentifier(pileList.get(i).getImage(), "drawable", getActivity().getPackageName());
-                imageViewPlayerDeck.setImageDrawable(getResources().getDrawable(resourceImage));
+                imageViewFirstCard.setImageDrawable(ResourcesCompat.getDrawable(getResources(), resourceImage, null));
+                // getResources().getDrawable(resourceImage)
+//                imageViewFirstCard.setImageDrawable(ResourcesCompat.getDrawable(getResources(), resourceImage, null));
 //                imageViewComputerDeck.setImageDrawable();
 //                imageViewFirstCard.setImageDrawable();
 //                imageViewSecondCard.setImageDrawable();
