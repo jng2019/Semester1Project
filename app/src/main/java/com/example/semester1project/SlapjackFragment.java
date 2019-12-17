@@ -109,22 +109,22 @@ public class SlapjackFragment extends Fragment{
     private void updateDisplay() {
         if (pileList != null) {
             Log.d(TAG, "updateDisplay: pile list has a value of" + pileList.size() );
-                int resourceImage = getResources().getIdentifier(pileList.get(pileList.size() - 1).getImage(), "drawable", getActivity().getPackageName());
-                imageViewFirstCard.setImageDrawable(ResourcesCompat.getDrawable(getResources(), resourceImage, null));
+            if (pileList.size() > 2) {
+                int resourceImage3 = getResources().getIdentifier(pileList.get(pileList.size() - 3).getImage(), "drawable", getActivity().getPackageName());
+                imageViewThirdCard.setImageDrawable(ResourcesCompat.getDrawable(getResources(), resourceImage3, null));
+            }
+            if (pileList.size() > 1) {
+                int resourceImage2 = getResources().getIdentifier(pileList.get(pileList.size() - 2).getImage(), "drawable", getActivity().getPackageName());
+                imageViewSecondCard.setImageDrawable(ResourcesCompat.getDrawable(getResources(), resourceImage2, null));
+            }
+            int resourceImage = getResources().getIdentifier(pileList.get(pileList.size() - 1).getImage(), "drawable", getActivity().getPackageName());
+            imageViewFirstCard.setImageDrawable(ResourcesCompat.getDrawable(getResources(), resourceImage, null));
                 // getResources().getDrawable(resourceImage)
 //                imageViewFirstCard.setImageDrawable(ResourcesCompat.getDrawable(getResources(), resourceImage, null));
 //                imageViewComputerDeck.setImageDrawable();
 //                imageViewFirstCard.setImageDrawable();
 //                imageViewSecondCard.setImageDrawable();
 //                imageViewThirdCard.setImageDrawable();
-            if (pileList.size() > 1) {
-                int resourceImage2 = getResources().getIdentifier(pileList.get(pileList.size() - 2).getImage(), "drawable", getActivity().getPackageName());
-                imageViewFirstCard.setImageDrawable(ResourcesCompat.getDrawable(getResources(), resourceImage2, null));
-            }
-            if (pileList.size() > 2) {
-                int resourceImage3 = getResources().getIdentifier(pileList.get(pileList.size() - 3).getImage(), "drawable", getActivity().getPackageName());
-                imageViewFirstCard.setImageDrawable(ResourcesCompat.getDrawable(getResources(), resourceImage3, null));
-            }
         }
     }
 
@@ -160,7 +160,7 @@ public class SlapjackFragment extends Fragment{
                 }
                 // pause before cpu's turn
                 // the time between the turns (there might be a combo)
-                timer = new CountDownTimer(2000, 1) {
+                timer = new CountDownTimer(1000, 1) {
                     @Override
                     public void onTick(long l) {
                         // boolean flag to indicate that the timer is running
@@ -169,11 +169,18 @@ public class SlapjackFragment extends Fragment{
                     // only get to onFinish() if the player did not slap after a turn
                     @Override
                     public void onFinish() {
+                        Log.d(TAG, "onFinish: timer has finished");
                         if (isCombo) {
-                            isRunning = false;
                             game.moveCardsToWinner(robotDeck);
                             playerTurn = false;
                         }
+                        else {
+                            game.playCard(robotDeck);
+                            Log.d(TAG, "onFinish: pileList size: " + pileList.size());
+                            playerTurn = true;
+                        }
+                        isRunning = false;
+                        updateDisplay();
                     }
                 }.start();
                 updateDisplay();

@@ -19,11 +19,13 @@ public class SlapjackGame {
     public void playCard(List<Card> deck) {
         // basically burnCard method but the card goes to the top (last index)
             pileList.add(deck.get(deck.size() - 1));
+            deck.remove(deck.get(deck.size() - 1));
     }
 
     public void burnCard(List<Card> deck) {
         // basically playCard method but the card goes to the bottom (first index)
             pileList.add(0, deck.get(deck.size() - 1));
+            deck.remove(deck.get(deck.size() - 1));
     }
 
     public void moveCardsToWinner(List<Card> winnerList){
