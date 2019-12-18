@@ -29,10 +29,10 @@
         android:src="@drawable/purple_back"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.534"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.015"
+        app:layout_constraintVertical_bias="0.01999998"
         tools:srcCompat="@tools:sample/avatars" />
 
     <ImageView
@@ -44,9 +44,9 @@
         android:layout_marginBottom="8dp"
         android:rotation="-10"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/button_slapjack_slap"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.381"
-        app:layout_constraintStart_toStartOf="@+id/button_slapjack_slap"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.499"
         tools:srcCompat="@tools:sample/avatars" />
@@ -59,9 +59,10 @@
         android:layout_marginTop="8dp"
         android:layout_marginBottom="8dp"
         android:rotation="0"
-        app:layout_constraintBottom_toBottomOf="@+id/button_slapjack_slap"
-        app:layout_constraintEnd_toEndOf="@+id/button_slapjack_slap"
-        app:layout_constraintStart_toStartOf="@+id/button_slapjack_slap"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:srcCompat="@tools:sample/avatars" />
 
@@ -74,9 +75,9 @@
         android:layout_marginBottom="8dp"
         android:rotation="10"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/button_slapjack_slap"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.669"
-        app:layout_constraintStart_toStartOf="@+id/button_slapjack_slap"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:srcCompat="@tools:sample/avatars" />
 
@@ -90,51 +91,48 @@
         android:src="@drawable/purple_back"
         app:layout_constraintBottom_toBottomOf="@+id/button_slapjack_slap"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.984"
+        app:layout_constraintVertical_bias="0.98"
         tools:srcCompat="@tools:sample/avatars" />
 
     <TextView
         android:id="@+id/textView_slapjack_robotCardsLeft"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="85dp"
-        android:layout_marginEnd="317dp"
-        android:layout_marginBottom="630dp"
         android:text="@string/robotCardsLeft"
-        app:layout_constraintBottom_toBottomOf="@+id/button_slapjack_slap"
-        app:layout_constraintEnd_toEndOf="@+id/button_slapjack_slap"
-        app:layout_constraintStart_toStartOf="@+id/button_slapjack_slap"
-        app:layout_constraintTop_toTopOf="@+id/button_slapjack_slap"
-        app:layout_constraintVertical_bias="0.0" />
+        android:textAlignment="viewStart"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/imageView_slapjack_robotDeck"
+        app:layout_constraintHorizontal_bias="0.531"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.127" />
 
     <TextView
         android:id="@+id/textView_slapjack_playerCardsLeft"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="630dp"
-        android:layout_marginEnd="317dp"
-        android:layout_marginBottom="85dp"
         android:text="@string/playerCardsLeft"
-        app:layout_constraintBottom_toBottomOf="@+id/button_slapjack_slap"
-        app:layout_constraintEnd_toEndOf="@+id/button_slapjack_slap"
-        app:layout_constraintStart_toStartOf="@+id/button_slapjack_slap"
-        app:layout_constraintTop_toTopOf="@+id/button_slapjack_slap"
-        app:layout_constraintVertical_bias="0.0" />
+        android:textAlignment="viewStart"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/imageView_slapjack_playerDeck"
+        app:layout_constraintHorizontal_bias="0.531"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.875" />
 
     <TextView
         android:id="@+id/textView_slapjack_turn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="177dp"
-        android:layout_marginTop="228dp"
-        android:layout_marginBottom="484dp"
         android:text="@string/turn"
+        android:textAlignment="center"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.502"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.293" />
 </androidx.constraintlayout.widget.ConstraintLayout>

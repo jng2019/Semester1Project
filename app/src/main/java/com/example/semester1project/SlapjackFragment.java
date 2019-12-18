@@ -152,7 +152,7 @@ public class SlapjackFragment extends Fragment{
                 // first click
                 if (pileDeck.size() == 0) {
                     game.playCard(playerDeck);
-                    Log.d(TAG, "onClick: hi if this is working the button is working");
+                    Log.d(TAG, "onClick: card played");
                     updateDisplay();
                     playerTurn = false;
                 }
@@ -162,12 +162,14 @@ public class SlapjackFragment extends Fragment{
                     if (isRunning) {
                         if (isCombo) {
                             game.moveCardsToWinner(playerDeck);
+                            Log.d(TAG, "onClick: card(s) won");
                             playerTurn = true;
                             clearDisplay();
                             updateDisplay();
                         }
                         else {
                             game.burnCard(playerDeck);
+                            Log.d(TAG, "onClick: card burned");
                             updateDisplay();
                         }
                         timer.cancel();
