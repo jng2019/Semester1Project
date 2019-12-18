@@ -1,21 +1,14 @@
 package com.example.semester1project;
 
-import android.graphics.drawable.Drawable;
-import android.media.Image;
 import android.os.Bundle;
 import android.os.CountDownTimer;
-import android.text.Editable;
-import android.text.TextWatcher;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.Chronometer;
-import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -38,13 +31,13 @@ public class SlapjackFragment extends Fragment{
 
     private Button buttonSlap;
     private ImageView imageViewPlayerDeck;
-    private ImageView imageViewComputerDeck;
+    private ImageView imageViewRobotDeck;
     private ImageView imageViewFirstCard;
     private ImageView imageViewSecondCard;
     private ImageView imageViewThirdCard;
-    private TextView cardsLeftRobot;
-    private TextView cardsLeftPlayer;
-    private TextView displayTurn;
+    private TextView textViewRobotCardsLeft;
+    private TextView textViewPlayerCardsLeft;
+    private TextView textViewDisplayTurn;
 
     private List<Card> completeDeckFromJson;
     private List<Card> playerDeck;
@@ -52,7 +45,7 @@ public class SlapjackFragment extends Fragment{
     private SlapjackGame game;
     private boolean playerTurn = true; // player turn is true, robot turn is false
     private boolean isCombo = false;
-    private ArrayList<Card> pileList;
+    private ArrayList<Card> pileDeck;
     private Random generator = new Random();
 
     private CountDownTimer timer;
@@ -82,7 +75,7 @@ public class SlapjackFragment extends Fragment{
         // split the cards into two piles; one for the player, one for the cpu
         robotDeck = new ArrayList<>();
         playerDeck = new ArrayList<>();
-        pileList = new ArrayList<>();
+        pileDeck = new ArrayList<>();
         int a;
         for (a = completeDeckFromJson.size() - 27; a >= 0; a--)
         {
@@ -93,7 +86,7 @@ public class SlapjackFragment extends Fragment{
         {
             playerDeck.add(completeDeckFromJson.get(b));
         }
-        game = new SlapjackGame(robotDeck, playerDeck, pileList);
+        game = new SlapjackGame(robotDeck, playerDeck, pileDeck);
         // verify that it read everything properly
         // pls work
         // inflate the fragment pythagorean layout
@@ -110,36 +103,46 @@ public class SlapjackFragment extends Fragment{
     }
 
     private void updateDisplay() {
-        if (pileList != null) {
-            Log.d(TAG, "updateDisplay: pile list has a value of" + pileList.size() );
-            if (pileList.size() > 2) {
-                int resourceImage3 = getResources().getIdentifier(pileList.get(pileList.size() - 3).getImage(), "drawable", getActivity().getPackageName());
+        if (pileDeck != null) {
+            Log.d(TAG, "updateDisplay: pile list has a value of" + pileDeck.size() );
+            if (pileDeck.size() > 2) {
+                int resourceImage3 = getResources().getIdentifier(pileDeck.get(pileDeck.size() - 3).getImage(), "drawable", getActivity().getPackageName());
                 imageViewThirdCard.setImageDrawable(ResourcesCompat.getDrawable(getResources(), resourceImage3, null));
             }
-            if (pileList.size() > 1) {
-                int resourceImage2 = getResources().getIdentifier(pileList.get(pileList.size() - 2).getImage(), "drawable", getActivity().getPackageName());
+            if (pileDeck.size() > 1) {
+                int resourceImage2 = getResources().getIdentifier(pileDeck.get(pileDeck.size() - 2).getImage(), "drawable", getActivity().getPackageName());
                 imageViewSecondCard.setImageDrawable(ResourcesCompat.getDrawable(getResources(), resourceImage2, null));
             }
-            if (pileList.size() > 0) {
-                int resourceImage = getResources().getIdentifier(pileList.get(pileList.size() - 1).getImage(), "drawable", getActivity().getPackageName());
+            if (pileDeck.size() > 0) {
+                int resourceImage = getResources().getIdentifier(pileDeck.get(pileDeck.size() - 1).getImage(), "drawable", getActivity().getPackageName());
                 imageViewFirstCard.setImageDrawable(ResourcesCompat.getDrawable(getResources(), resourceImage, null));
             }
                 // getResources().getDrawable(resourceImage)
 //                imageViewFirstCard.setImageDrawable(ResourcesCompat.getDrawable(getResources(), resourceImage, null));
-//                imageViewComputerDeck.setImageDrawable();
+//                imageViewRobotDeck.setImageDrawable();
 //                imageViewFirstCard.setImageDrawable();
 //                imageViewSecondCard.setImageDrawable();
 //                imageViewThirdCard.setImageDrawable();
         }
-        displayTurn.setText(String.valueOf(playerTurn));
-        cardsLeftRobot.setText(String.valueOf(robotDeck.size()));
-        cardsLeftPlayer.setText(String.valueOf(playerDeck.size()));
+        updateInfo();
     }
 
     private void clearDisplay() {
         imageViewFirstCard.setImageResource(android.R.color.transparent);
         imageViewSecondCard.setImageResource(android.R.color.transparent);
         imageViewThirdCard.setImageResource(android.R.color.transparent);
+        updateInfo();
+    }
+
+    private void updateInfo() {
+        if (playerTurn) {
+            textViewDisplayTurn.setText("Your turn");
+        }
+        else {
+            textViewDisplayTurn.setText("Opponent's turn");
+        }
+        textViewRobotCardsLeft.setText("Cards left: " + robotDeck.size());
+        textViewPlayerCardsLeft.setText("Cards left: " + playerDeck.size());
     }
 
     private void setOnClickListeners() {
@@ -147,7 +150,7 @@ public class SlapjackFragment extends Fragment{
             @Override
             public void onClick(View v) {
                 // first click
-                if (pileList.size() == 0) {
+                if (pileDeck.size() == 0) {
                     game.playCard(playerDeck);
                     Log.d(TAG, "onClick: hi if this is working the button is working");
                     updateDisplay();
@@ -160,6 +163,7 @@ public class SlapjackFragment extends Fragment{
                         if (isCombo) {
                             game.moveCardsToWinner(playerDeck);
                             playerTurn = true;
+                            clearDisplay();
                             updateDisplay();
                         }
                         else {
@@ -176,44 +180,71 @@ public class SlapjackFragment extends Fragment{
                 }
                 // pause before cpu's turn
                 // the time between the turns (there might be a combo)
-                timer = new CountDownTimer(1000, 1) {
-                    @Override
-                    public void onTick(long l) {
-                        // boolean flag to indicate that the timer is running
-                        isRunning = true;
-                    }
-                    // only get to onFinish() if the player did not slap after a turn
-                    @Override
-                    public void onFinish() {
-                        Log.d(TAG, "onFinish: timer has finished");
-                        if (isCombo) {
-                            game.moveCardsToWinner(robotDeck);
-                            playerTurn = false;
-                        }
-                        else {
-                            game.playCard(robotDeck);
-                            Log.d(TAG, "onFinish: pileList size: " + pileList.size());
-                            playerTurn = true;
-                        }
-                        isRunning = false;
-                        updateDisplay();
-                    }
-                }.start();
+                robotAI();
                 updateDisplay();
             }
         });
     }
 
+    private void delay() {
+        try {
+            Thread.sleep(1000);
+        }
+        catch (InterruptedException ie) {
+            ie.printStackTrace();
+        }
+    }
+
+    private void robotAI() {
+        timer = new CountDownTimer(1000, 1) {
+            @Override
+            public void onTick(long millisUntilFinished) {
+                // boolean flag to indicate that the timer is running
+                isRunning = true;
+            }
+            // only get to onFinish() if the player did not slap after a turn
+            @Override
+            public void onFinish() {
+                Log.d(TAG, "onFinish: timer has finished");
+
+                // need to loop robot's turn until it plays a card && there's no combo********************************
+
+                if (!playerTurn) { // removed temporarily: pileDeck.size() != 0
+                    isCombo = game.checkForCombo(); // check for combo
+                    if (isCombo) {
+                        // cpu slaps and wins cards from pileDeck
+                        game.moveCardsToWinner(robotDeck);
+                        clearDisplay();
+                        game.playCard(robotDeck);
+                        playerTurn = true;
+                    }
+                    else {
+                        // cpu plays a card
+                        game.playCard(robotDeck);
+                        isCombo = game.checkForCombo(); // check for combo
+                        if (isCombo) {
+                            robotAI();
+                        }
+                        Log.d(TAG, "onFinish: pileDeck size: " + pileDeck.size());
+                        playerTurn = true;
+                    }
+                    isRunning = false;
+                    updateDisplay();
+                }
+            }
+        }.start();
+    }
+
     private void wireWidgets(View rootView) {
         buttonSlap = rootView.findViewById(R.id.button_slapjack_slap);
-        imageViewPlayerDeck = rootView.findViewById(R.id.imageView);
-        imageViewComputerDeck = rootView.findViewById(R.id.imageView_robotDeck_slapjack);
-        imageViewFirstCard = rootView.findViewById(R.id.imageView_rightCard_slapjack);
-        imageViewSecondCard = rootView.findViewById(R.id.imageView_middleCard_slapjack);
-        imageViewThirdCard = rootView.findViewById(R.id.imageView_leftCard_slapjack );
-        cardsLeftPlayer = rootView.findViewById(R.id.cardsPlayer_textview_slapjack);
-        cardsLeftRobot = rootView.findViewById(R.id.cards_Robot_slapJack_);
-        displayTurn = rootView.findViewById(R.id.textView_playerTurn_slapjack);
+        imageViewPlayerDeck = rootView.findViewById(R.id.imageView_slapjack_playerDeck);
+        imageViewRobotDeck = rootView.findViewById(R.id.imageView_slapjack_robotDeck);
+        imageViewFirstCard = rootView.findViewById(R.id.imageView_slapjack_rightCard);
+        imageViewSecondCard = rootView.findViewById(R.id.imageView_slapjack_middleCard);
+        imageViewThirdCard = rootView.findViewById(R.id.imageView_slapjack_leftCard);
+        textViewPlayerCardsLeft = rootView.findViewById(R.id.textView_slapjack_playerCardsLeft);
+        textViewRobotCardsLeft = rootView.findViewById(R.id.textView_slapjack_robotCardsLeft);
+        textViewDisplayTurn = rootView.findViewById(R.id.textView_slapjack_turn);
     }
 
     public String readTextFile(InputStream inputStream) {

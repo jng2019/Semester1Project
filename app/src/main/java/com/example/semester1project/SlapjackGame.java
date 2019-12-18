@@ -11,7 +11,7 @@ public class SlapjackGame {
     private boolean playerTurn; // true = player's turn, false = robot's turn
     private boolean combo = false;
 
-    public SlapjackGame(List<Card> robotList, List<Card> playerList, List<Card> pileList){
+    public SlapjackGame(List<Card> robotList, List<Card> playerList, List<Card> pileList) {
         this.robotList = robotList;
         this.playerList = playerList;
         this.pileList = pileList;
@@ -40,7 +40,7 @@ public class SlapjackGame {
         return playerTurn;
     }
 
-    public boolean checkEndGame(){
+    public boolean checkEndGame() {
         if (playerList.size() == 0 || robotList.size() == 0){
             return true;
         }

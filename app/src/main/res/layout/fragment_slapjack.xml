@@ -14,13 +14,13 @@
         android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0" />
 
     <ImageView
-        android:id="@+id/imageView_robotDeck_slapjack"
+        android:id="@+id/imageView_slapjack_robotDeck"
         android:layout_width="125dp"
         android:layout_height="175dp"
         android:layout_marginStart="8dp"
@@ -36,7 +36,7 @@
         tools:srcCompat="@tools:sample/avatars" />
 
     <ImageView
-        android:id="@+id/imageView_leftCard_slapjack"
+        android:id="@+id/imageView_slapjack_leftCard"
         android:layout_width="125dp"
         android:layout_height="175dp"
         android:layout_marginTop="8dp"
@@ -52,7 +52,7 @@
         tools:srcCompat="@tools:sample/avatars" />
 
     <ImageView
-        android:id="@+id/imageView_middleCard_slapjack"
+        android:id="@+id/imageView_slapjack_middleCard"
         android:layout_width="125dp"
         android:layout_height="175dp"
         android:layout_marginStart="8dp"
@@ -66,7 +66,7 @@
         tools:srcCompat="@tools:sample/avatars" />
 
     <ImageView
-        android:id="@+id/imageView_rightCard_slapjack"
+        android:id="@+id/imageView_slapjack_rightCard"
         android:layout_width="125dp"
         android:layout_height="175dp"
         android:layout_marginStart="8dp"
@@ -81,7 +81,7 @@
         tools:srcCompat="@tools:sample/avatars" />
 
     <ImageView
-        android:id="@+id/imageView_playerDeck_slapjack"
+        android:id="@+id/imageView_slapjack_playerDeck"
         android:layout_width="125dp"
         android:layout_height="175dp"
         android:layout_marginStart="8dp"
@@ -97,35 +97,43 @@
         tools:srcCompat="@tools:sample/avatars" />
 
     <TextView
-        android:id="@+id/cards_Robot_slapJack_"
+        android:id="@+id/textView_slapjack_robotCardsLeft"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="58dp"
-        android:layout_marginTop="84dp"
-        android:layout_marginBottom="628dp"
-        android:text="@string/cardsLeftRobot"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="85dp"
+        android:layout_marginEnd="317dp"
+        android:layout_marginBottom="630dp"
+        android:text="@string/robotCardsLeft"
+        app:layout_constraintBottom_toBottomOf="@+id/button_slapjack_slap"
+        app:layout_constraintEnd_toEndOf="@+id/button_slapjack_slap"
+        app:layout_constraintStart_toStartOf="@+id/button_slapjack_slap"
+        app:layout_constraintTop_toTopOf="@+id/button_slapjack_slap"
+        app:layout_constraintVertical_bias="0.0" />
 
     <TextView
-        android:id="@+id/cardsPlayer_textview_slapjack"
+        android:id="@+id/textView_slapjack_playerCardsLeft"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="59dp"
+        android:layout_marginStart="20dp"
         android:layout_marginTop="630dp"
-        android:text="@string/cardsLeftPlayer"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_marginEnd="317dp"
+        android:layout_marginBottom="85dp"
+        android:text="@string/playerCardsLeft"
+        app:layout_constraintBottom_toBottomOf="@+id/button_slapjack_slap"
+        app:layout_constraintEnd_toEndOf="@+id/button_slapjack_slap"
+        app:layout_constraintStart_toStartOf="@+id/button_slapjack_slap"
+        app:layout_constraintTop_toTopOf="@+id/button_slapjack_slap"
+        app:layout_constraintVertical_bias="0.0" />
 
     <TextView
-        android:id="@+id/textView_playerTurn_slapjack"
+        android:id="@+id/textView_slapjack_turn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="177dp"
         android:layout_marginTop="228dp"
         android:layout_marginBottom="484dp"
-        android:text="@string/Turn"
+        android:text="@string/turn"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
