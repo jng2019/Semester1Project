@@ -70,7 +70,7 @@ public class SlapjackFragment extends Fragment{
         for (int i = 0; i < completeDeckFromJson.size(); i++)
         {
             int randomIndex = generator.nextInt(completeDeckFromJson.size() - 1);
-            completeDeckFromJson.set(i, completeDeckFromJson.get(randomIndex));
+            completeDeckFromJson.set(randomIndex, completeDeckFromJson.get(i));
         }
         // split the cards into two piles; one for the player, one for the cpu
         robotDeck = new ArrayList<>();
@@ -88,7 +88,6 @@ public class SlapjackFragment extends Fragment{
         }
         game = new SlapjackGame(robotDeck, playerDeck, pileDeck);
         // verify that it read everything properly
-        // pls work
         // inflate the fragment pythagorean layout
         View rootView = inflater.inflate(R.layout.fragment_slapjack, container, false);
 //        super.onCreateView(inflater, container, savedInstanceState);
@@ -151,10 +150,10 @@ public class SlapjackFragment extends Fragment{
             public void onClick(View v) {
                 // first click
                 if (pileDeck.size() == 0) {
-                    game.playCard(playerDeck);
+                    game.playCardPlayer();
                     Log.d(TAG, "onClick: card played");
-                    updateDisplay();
                     playerTurn = false;
+                    updateDisplay();
                 }
                 // all following clicks
                 else {
@@ -175,7 +174,8 @@ public class SlapjackFragment extends Fragment{
                         timer.cancel();
                     }
                     else {
-                        game.playCard(playerDeck);
+                        game.playCardPlayer();
+                        Log.d(TAG, "onClick: card played");
                         playerTurn = false;
                         updateDisplay();
                     }
@@ -217,15 +217,16 @@ public class SlapjackFragment extends Fragment{
                         // cpu slaps and wins cards from pileDeck
                         game.moveCardsToWinner(robotDeck);
                         clearDisplay();
-                        game.playCard(robotDeck);
+                        game.playCardRobot();
                         playerTurn = true;
                     }
                     else {
                         // cpu plays a card
-                        game.playCard(robotDeck);
+                        game.playCardRobot();
+                        updateDisplay();
                         isCombo = game.checkForCombo(); // check for combo
                         if (isCombo) {
-                            robotAI();
+                            robotAI2();
                         }
                         Log.d(TAG, "onFinish: pileDeck size: " + pileDeck.size());
                         playerTurn = true;
@@ -233,6 +234,38 @@ public class SlapjackFragment extends Fragment{
                     isRunning = false;
                     updateDisplay();
                 }
+            }
+        }.start();
+    }
+
+    private void robotAI2() {
+        timer = new CountDownTimer(1000, 1) {
+            @Override
+            public void onTick(long l) {
+                isRunning = true;
+            }
+
+            @Override
+            public void onFinish() {
+                isCombo = game.checkForCombo();
+                if (isCombo) {
+                    game.moveCardsToWinner(robotDeck);
+                    clearDisplay();
+                    game.playCardRobot();
+                    playerTurn = true;
+                }
+                else {
+                    game.playCardRobot();
+                    updateDisplay();
+                    isCombo = game.checkForCombo(); // check for combo
+                    if (isCombo) {
+                        robotAI2();
+                    }
+                    Log.d(TAG, "onFinish: pileDeck size: " + pileDeck.size());
+                    playerTurn = true;
+                }
+                isRunning = false;
+                updateDisplay();
             }
         }.start();
     }

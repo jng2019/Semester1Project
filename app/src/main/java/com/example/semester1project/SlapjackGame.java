@@ -17,16 +17,21 @@ public class SlapjackGame {
         this.pileList = pileList;
     }
 
-    public void playCard(List<Card> deck) {
+    public void playCardPlayer() {
         // basically burnCard method but the card goes to the top (last index)
-            pileList.add(deck.get(deck.size() - 1));
-            deck.remove(deck.get(deck.size() - 1));
+        pileList.add(playerList.get(playerList.size() - 1));
+        playerList.remove(playerList.get(playerList.size() - 1));
+    }
+
+    public void playCardRobot() {
+        pileList.add(robotList.get(robotList.size() - 1));
+        robotList.remove(robotList.get(robotList.size() - 1));
     }
 
     public void burnCard(List<Card> deck) {
         // basically playCard method but the card goes to the bottom (first index)
-            pileList.add(0, deck.get(deck.size() - 1));
-            deck.remove(deck.get(deck.size() - 1));
+        pileList.add(0, deck.get(deck.size() - 1));
+        deck.remove(deck.get(deck.size() - 1));
     }
 
     public void moveCardsToWinner(List<Card> winnerList){
@@ -53,20 +58,24 @@ public class SlapjackGame {
     public boolean checkForCombo() {
         // delete the previous combo if there are no matches
         // checking for sandwiches
-        if (pileList.size() > 2){
+        combo = false;
+        if (pileList.size() > 2) {
             if (pileList.get(pileList.size()- 3).getNumber() == pileList.get(pileList.size() - 1).getNumber()){
                 combo = true;
             }
         }
         // checking for doubles
-        else if ((pileList.size() > 1)) {
+        if (pileList.size() > 1) {
             if ((pileList.get(pileList.size() - 2)).getNumber() == pileList.get(pileList.size() - 1).getNumber()) {
                 combo = true;
             }
+
         }
         // checking for jacks
-        else {
-            combo = pileList.get(pileList.size() - 1).getNumber() == 11;
+        if (pileList.size() > 0) {
+            if (pileList.get(pileList.size() - 1).getNumber() == 11) {
+                combo = true;
+            }
         }
         return combo;
     }
