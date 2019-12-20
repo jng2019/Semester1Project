@@ -196,7 +196,7 @@ public class SlapjackFragment extends Fragment{
     }
 
     private void robotAI() {
-        timer = new CountDownTimer(350, 1) {
+        timer = new CountDownTimer(500, 1) {
             @Override
             public void onTick(long millisUntilFinished) {
                 // boolean flag to indicate that the timer is running
