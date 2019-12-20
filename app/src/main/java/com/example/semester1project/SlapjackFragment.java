@@ -22,6 +22,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 import java.util.Random;
 
@@ -67,11 +68,7 @@ public class SlapjackFragment extends Fragment{
         // convert your array to a list using the Arrays utility class
         completeDeckFromJson = Arrays.asList(cards);
         // shuffle the cards
-        for (int i = 0; i < completeDeckFromJson.size(); i++)
-        {
-            int randomIndex = generator.nextInt(completeDeckFromJson.size() - 1);
-            completeDeckFromJson.set(randomIndex, completeDeckFromJson.get(i));
-        }
+        Collections.shuffle(completeDeckFromJson);
         // split the cards into two piles; one for the player, one for the cpu
         robotDeck = new ArrayList<>();
         playerDeck = new ArrayList<>();
@@ -190,15 +187,16 @@ public class SlapjackFragment extends Fragment{
 
     private void delay() {
         try {
-            Thread.sleep(1000);
+            Thread.sleep(500);
         }
         catch (InterruptedException ie) {
+            Thread.currentThread().interrupt();
             ie.printStackTrace();
         }
     }
 
     private void robotAI() {
-        timer = new CountDownTimer(1000, 1) {
+        timer = new CountDownTimer(350, 1) {
             @Override
             public void onTick(long millisUntilFinished) {
                 // boolean flag to indicate that the timer is running
@@ -218,6 +216,10 @@ public class SlapjackFragment extends Fragment{
                         game.moveCardsToWinner(robotDeck);
                         clearDisplay();
                         game.playCardRobot();
+                        isCombo = game.checkForCombo(); // check for combo
+                        if (isCombo) {
+                            robotAI2();
+                        }
                         playerTurn = true;
                     }
                     else {
@@ -252,6 +254,7 @@ public class SlapjackFragment extends Fragment{
                     game.moveCardsToWinner(robotDeck);
                     clearDisplay();
                     game.playCardRobot();
+                    isCombo = game.checkForCombo(); // check for combo
                     playerTurn = true;
                 }
                 else {
