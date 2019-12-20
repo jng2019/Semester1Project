@@ -14,6 +14,7 @@
     <string name="menu_share">Share</string>
     <string name="menu_send">Send</string>
     <string name="menu_slapjack">Slapjack</string>
+    <string name="menu_rules">Rules</string>
     <string name="turn">~Turn~</string>
     <string name="robotCardsLeft">Cards left: </string>
     <string name="playerCardsLeft">Cards left: </string>
