@@ -53,6 +53,14 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         navigationView.setNavigationItemSelectedListener(this);
 
 
+        Fragment fragment = new RulesFragment();
+        FragmentManager fm = getSupportFragmentManager();
+        if (fragment != null) {
+            fm.beginTransaction()
+                    .replace(R.id.constraintlayout_main_container, fragment)
+                    .commit();
+            Log.d(TAG, "onNavigationItemSelected: fhelp me if you see this it's working");
+        }
     }
 
     @Override
@@ -102,6 +110,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         }
         else if (id == R.id.nav_rules) {
             fragment = new RulesFragment();
+        }
+        else if (id == R.id.nav_padoru) {
+            fragment = new PadoruFragment();
         }
 
         // load the fragment into the activity

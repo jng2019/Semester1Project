@@ -13,6 +13,10 @@
             android:id="@+id/nav_rules"
             android:icon="@drawable/ic_menu_slideshow"
             android:title="@string/menu_rules" />
+        <item
+            android:id="@+id/nav_padoru"
+            android:icon="@drawable/ic_menu_camera"
+            android:title="@string/menu_padoru" />
     </group>
 
 </menu>

@@ -51,9 +51,9 @@ public class SlapjackFragment extends Fragment{
 
     private CountDownTimer timer;
     private boolean isRunning = false;
-//    private int cpuEasy;
-//    private int cpuMedium;
-//    private int cpuHard;
+    private int cpuEasy = 1000;
+    private int cpuMedium = 700;
+    private int cpuHard = 500;
 
     @Nullable
     @Override
@@ -196,7 +196,7 @@ public class SlapjackFragment extends Fragment{
     }
 
     private void robotAI() {
-        timer = new CountDownTimer(500, 1) {
+        timer = new CountDownTimer(cpuMedium, 1) {
             @Override
             public void onTick(long millisUntilFinished) {
                 // boolean flag to indicate that the timer is running
@@ -241,7 +241,7 @@ public class SlapjackFragment extends Fragment{
     }
 
     private void robotAI2() {
-        timer = new CountDownTimer(1000, 1) {
+        timer = new CountDownTimer(cpuMedium, 1) {
             @Override
             public void onTick(long l) {
                 isRunning = true;
